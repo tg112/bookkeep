@@ -7,12 +7,10 @@ const BookSchema = new Schema({
     required: true,
   },
   author: {
-    type: Boolean,
-    default: false,
+    type: String,
   },
   pages: {
     type: Number,
-    default: false,
   },
 });
 
