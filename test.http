@@ -1,0 +1,30 @@
+### GET a specific book
+GET https://localhost:3000/books/1
+content-type: application/json
+
+### GET all books
+GET https://localhost:3000/books
+content-type: application/json
+
+### Create a book
+POST https://localhost:3000/books
+Content-Type: application/json
+
+{
+    "title": "Sample",
+    "author": "Jhon Doe",
+    "pages": "200",
+}
+
+### Patch a book
+PATCH https://localhost:3000/books/1
+Content-Type: application/json
+
+{
+    "title": "updated title
+}
+
+
+### DELETE a book
+DELETE https://localhost:3000/books/1
+Content-Type: application/json
