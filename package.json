@@ -1,0 +1,45 @@
+{
+  "name": "project2",
+  "version": "1.0.0",
+  "description": "This is an assignment for project2 of CS5610",
+  "homepage": "https://github.com/tg112/bookkeep#readme",
+  "bugs": {
+    "url": "https://github.com/tg112/bookkeep/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tg112/bookkeep.git"
+  },
+  "license": "MIT",
+  "author": "Shota Togawa",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch ./backend/index.js",
+    "lint-staged": "lint-staged",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.4.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-jest": "^29.15.2",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "jest": "^30.4.2",
+    "lint-staged": "^17.0.5",
+    "prettier": "^3.8.3"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.7.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
