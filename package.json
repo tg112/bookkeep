@@ -11,7 +11,7 @@
     "url": "git+https://github.com/tg112/bookkeep.git"
   },
   "license": "MIT",
-  "author": "Shota Togawa",
+  "author": "Shota Togawa, Daiwei Zhang",
   "type": "module",
   "main": "index.js",
   "scripts": {
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "express": "^5.2.1",
-    "mongoose": "^9.7.0"
+    "mongodb": "^6.0.0"
   },
   "lint-staged": {
     "*.js": [
