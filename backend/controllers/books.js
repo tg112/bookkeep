@@ -59,7 +59,7 @@ export const deleteBook = async (req, res) => {
   const book = await Book.findByIdAndDelete(req.params.bookId);
   try {
     if (!book) {
-      return res.status(404).send("User not found");
+      return res.status(404).send("Book not found");
     }
     return res.status(200).send();
   } catch (e) {
