@@ -26,7 +26,8 @@ export const getAllBooks = async (req, res) => {
 
 export const addBook = async (req, res) => {
   try {
-    const result = await getBooksCollection().insertOne(req.body);
+    const doc = { currentPage: 0, status: "UNREAD", ...req.body };
+    const result = await getBooksCollection().insertOne(doc);
     const book = await getBooksCollection().findOne({ _id: result.insertedId });
     return res.status(201).json(book);
   } catch (e) {

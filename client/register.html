@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Book — Bookkeep</title>
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/register.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <a href="index.html" class="header-logo">Bookkeep</a>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="toolbar">
+        <h2 class="section-title">Add Book</h2>
+        <a href="index.html" class="btn btn-secondary">← Back</a>
+      </div>
+
+      <form id="register-form" class="card form-card" novalidate>
+        <div class="form-group">
+          <label for="title">Title <span class="required">*</span></label>
+          <input type="text" id="title" name="title" required placeholder="e.g. The Great Gatsby" />
+          <span class="field-error" id="title-error"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" id="author" name="author" placeholder="e.g. F. Scott Fitzgerald" />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="totalPages">Total Pages</label>
+            <input type="number" id="totalPages" name="totalPages" min="1" placeholder="e.g. 320" />
+          </div>
+
+          <div class="form-group">
+            <label for="genre">Genre</label>
+            <select id="genre" name="genre">
+              <option value="">— Select genre —</option>
+              <option value="FICTION">Fiction</option>
+              <option value="NON-FICTION">Non-Fiction</option>
+              <option value="BIOGRAPHY">Biography</option>
+              <option value="AUTOBIOGRAPHY">Autobiography</option>
+              <option value="HISTORY">History</option>
+              <option value="BUSINESS">Business</option>
+              <option value="TECHNOLOGY">Technology</option>
+              <option value="SCIENCE">Science</option>
+              <option value="ECONOMICS">Economics</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Add Book</button>
+        </div>
+
+        <p class="status-message" id="form-error" hidden></p>
+      </form>
+    </main>
+
+    <script type="module" src="js/register.js"></script>
+  </body>
+</html>
