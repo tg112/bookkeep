@@ -50,6 +50,16 @@ function createBookCard(book, li) {
     meta.append(pages);
   }
 
+  const editBtn = document.createElement("button");
+  editBtn.className = "btn-edit";
+  editBtn.textContent = "✎";
+  editBtn.setAttribute("aria-label", "Edit book");
+  editBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    window.location.href = `edit.html?id=${book._id}`;
+  });
+
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "btn-delete";
   deleteBtn.textContent = "✕";
@@ -66,7 +76,7 @@ function createBookCard(book, li) {
     }
   });
 
-  meta.append(deleteBtn);
+  meta.append(editBtn, deleteBtn);
   a.append(info, meta);
   return a;
 }

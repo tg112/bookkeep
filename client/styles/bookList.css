@@ -85,6 +85,26 @@
   white-space: nowrap;
 }
 
+/* ── Edit button ── */
+.btn-edit {
+  background: transparent;
+  color: #aaa;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.btn-edit:hover {
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #93c5fd;
+}
+
 /* ── States ── */
 .status-message {
   text-align: center;
