@@ -19,7 +19,30 @@
         <h2 class="section-title">Books</h2>
         <a href="register.html" class="btn btn-primary">+ Add Book</a>
       </div>
+      <div class="filter-bar">
+        <div class="status-filters">
+          <button class="filter-btn active" data-status="">All</button>
+          <button class="filter-btn" data-status="UNREAD">Unread</button>
+          <button class="filter-btn" data-status="READING">Reading</button>
+          <button class="filter-btn" data-status="READ">Read</button>
+        </div>
+        <select id="genre-filter" class="genre-select">
+          <option value="">All Genres</option>
+          <option value="FICTION">Fiction</option>
+          <option value="NON-FICTION">Non-Fiction</option>
+          <option value="BIOGRAPHY">Biography</option>
+          <option value="AUTOBIOGRAPHY">Autobiography</option>
+          <option value="HISTORY">History</option>
+          <option value="BUSINESS">Business</option>
+          <option value="TECHNOLOGY">Technology</option>
+          <option value="SCIENCE">Science</option>
+          <option value="ECONOMICS">Economics</option>
+        </select>
+      </div>
+
       <ul id="book-list" class="book-list"></ul>
+
+      <div id="pagination" class="pagination" hidden></div>
     </main>
 
     <script type="module" src="js/bookList.js"></script>
