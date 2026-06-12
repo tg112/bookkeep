@@ -1,14 +1,17 @@
 const PAGE_SIZE = 20;
 
-let allBooks = [];
 let filters = { status: "", genre: "" };
 let currentPage = 1;
 
 // API
 async function fetchBooks() {
-  const res = await fetch("http://localhost:3000/api/books");
+  const params = new URLSearchParams({ page: currentPage, limit: PAGE_SIZE });
+  if (filters.status) params.set("status", filters.status);
+  if (filters.genre) params.set("genre", filters.genre);
+
+  const res = await fetch(`http://localhost:3000/api/books?${params}`);
   if (!res.ok) throw new Error(`Failed to fetch books: ${res.status}`);
-  return res.json();
+  return res.json(); // { books, total, page, totalPages }
 }
 
 async function deleteBook(id) {
@@ -16,16 +19,6 @@ async function deleteBook(id) {
     method: "DELETE",
   });
   if (!res.ok) throw new Error(`Failed to delete book: ${res.status}`);
-}
-
-// Filter
-function getFilteredBooks() {
-  return allBooks.filter((book) => {
-    const statusMatch =
-      !filters.status || (book.status ?? "UNREAD") === filters.status;
-    const genreMatch = !filters.genre || book.genre === filters.genre;
-    return statusMatch && genreMatch;
-  });
 }
 
 // Card
@@ -88,10 +81,7 @@ function createBookCard(book) {
     if (!confirm(`Delete "${book.title}"?`)) return;
     try {
       await deleteBook(book._id);
-      allBooks = allBooks.filter((b) => b._id !== book._id);
-      const totalPages = Math.ceil(getFilteredBooks().length / PAGE_SIZE);
-      if (currentPage > totalPages && totalPages > 0) currentPage = totalPages;
-      render();
+      await render();
     } catch (err) {
       alert(`Failed to delete: ${err.message}`);
     }
@@ -102,10 +92,9 @@ function createBookCard(book) {
   return a;
 }
 
-// Pagination
-function renderPagination(totalItems) {
+// ── Pagination ───────────────────────────────────────
+function renderPagination(totalPages) {
   const pagination = document.getElementById("pagination");
-  const totalPages = Math.ceil(totalItems / PAGE_SIZE);
 
   if (totalPages <= 1) {
     pagination.hidden = true;
@@ -142,34 +131,48 @@ function renderPagination(totalItems) {
   pagination.append(prev, info, next);
 }
 
-// Render
-function render() {
+// ── Render ───────────────────────────────────────────
+async function render() {
   const list = document.getElementById("book-list");
   list.innerHTML = "";
 
-  const filtered = getFilteredBooks();
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const pageBooks = filtered.slice(start, start + PAGE_SIZE);
+  try {
+    const { books, totalPages } = await fetchBooks();
 
-  if (filtered.length === 0) {
+    // If deletion emptied the current page, step back
+    if (books.length === 0 && currentPage > 1) {
+      currentPage--;
+      await render();
+      return;
+    }
+
+    if (books.length === 0) {
+      const li = document.createElement("li");
+      const msg = document.createElement("p");
+      msg.className = "status-message";
+      msg.textContent = "No books found.";
+      li.append(msg);
+      list.append(li);
+    } else {
+      books.forEach((book) => {
+        const li = document.createElement("li");
+        li.append(createBookCard(book));
+        list.append(li);
+      });
+    }
+
+    renderPagination(totalPages);
+  } catch (err) {
     const li = document.createElement("li");
     const msg = document.createElement("p");
     msg.className = "status-message";
-    msg.textContent = "No books found.";
+    msg.textContent = `Error: ${err.message}`;
     li.append(msg);
     list.append(li);
-  } else {
-    pageBooks.forEach((book) => {
-      const li = document.createElement("li");
-      li.append(createBookCard(book));
-      list.append(li);
-    });
   }
-
-  renderPagination(filtered.length);
 }
 
-// Filter event listeners
+// ── Filter event listeners ────────────────────────────
 document.querySelectorAll(".filter-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     document
@@ -189,20 +192,4 @@ document.getElementById("genre-filter").addEventListener("change", (e) => {
 });
 
 // Init
-async function init() {
-  const list = document.getElementById("book-list");
-  try {
-    allBooks = await fetchBooks();
-    render();
-  } catch (err) {
-    list.innerHTML = "";
-    const li = document.createElement("li");
-    const msg = document.createElement("p");
-    msg.className = "status-message";
-    msg.textContent = `Error: ${err.message}`;
-    li.append(msg);
-    list.append(li);
-  }
-}
-
-init();
+render();
