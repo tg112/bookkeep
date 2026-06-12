@@ -11,6 +11,13 @@ async function deleteBook(id) {
   if (!res.ok) throw new Error(`Failed to delete book: ${res.status}`);
 }
 
+function createStatusBadge(status) {
+  const span = document.createElement("span");
+  span.className = `status-badge status-${status.toLowerCase()}`;
+  span.textContent = status;
+  return span;
+}
+
 function createBookCard(book, li) {
   const a = document.createElement("a");
   a.className = "book-card";
@@ -23,18 +30,25 @@ function createBookCard(book, li) {
   title.className = "book-title";
   title.textContent = book.title;
 
-  const author = document.createElement("span");
-  author.className = "book-author";
-  author.textContent = book.author || "Unknown author";
+  const sub = document.createElement("span");
+  sub.className = "book-subtitle";
+  const parts = [book.author || "Unknown author"];
+  if (book.genre) parts.push(book.genre.replace("-", "‑"));
+  sub.textContent = parts.join(" · ");
 
-  info.append(title, author);
+  info.append(title, sub);
 
   const meta = document.createElement("div");
   meta.className = "book-meta";
 
-  const pages = document.createElement("span");
-  pages.className = "book-pages";
-  pages.textContent = book.pages ? `${book.pages} pages` : "";
+  meta.append(createStatusBadge(book.status || "UNREAD"));
+
+  if (book.totalPages) {
+    const pages = document.createElement("span");
+    pages.className = "book-pages";
+    pages.textContent = `${book.totalPages} pages`;
+    meta.append(pages);
+  }
 
   const deleteBtn = document.createElement("button");
   deleteBtn.className = "btn-delete";
@@ -52,7 +66,7 @@ function createBookCard(book, li) {
     }
   });
 
-  meta.append(pages, deleteBtn);
+  meta.append(deleteBtn);
   a.append(info, meta);
   return a;
 }

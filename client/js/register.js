@@ -19,9 +19,12 @@ form.addEventListener("submit", async (e) => {
 
   const body = { title };
   const author = document.getElementById("author").value.trim();
-  const pages = document.getElementById("pages").value;
+  const totalPages = document.getElementById("totalPages").value;
+  const genre = document.getElementById("genre").value;
+
   if (author) body.author = author;
-  if (pages) body.pages = Number(pages);
+  if (totalPages) body.totalPages = Number(totalPages);
+  if (genre) body.genre = genre;
 
   submitBtn.disabled = true;
   submitBtn.textContent = "Saving…";
