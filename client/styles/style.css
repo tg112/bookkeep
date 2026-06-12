@@ -287,6 +287,127 @@ main {
   border-color: #1a1a2e;
 }
 
+/* ── Book detail ── */
+.detail-card {
+  max-width: 680px;
+}
+
+.detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.genre-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #ede9fe;
+  color: #6d28d9;
+  white-space: nowrap;
+}
+
+.detail-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 4px;
+}
+
+.detail-author {
+  font-size: 1rem;
+  color: #555;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin-block: 24px;
+}
+
+.detail-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.progress-pages {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.progress-pct {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.progress-bar-track {
+  height: 8px;
+  background: #f0f0f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #1a1a2e;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.detail-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.meta-item {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.meta-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .book-card {
@@ -296,5 +417,13 @@ main {
 
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .detail-title {
+    font-size: 1.4rem;
+  }
+
+  .detail-meta-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
