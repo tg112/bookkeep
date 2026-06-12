@@ -92,7 +92,7 @@ function createBookCard(book) {
   return a;
 }
 
-// ── Pagination ───────────────────────────────────────
+// Pagination
 function renderPagination(totalPages) {
   const pagination = document.getElementById("pagination");
 
@@ -131,7 +131,7 @@ function renderPagination(totalPages) {
   pagination.append(prev, info, next);
 }
 
-// ── Render ───────────────────────────────────────────
+// Render
 async function render() {
   const list = document.getElementById("book-list");
   list.innerHTML = "";
@@ -172,7 +172,7 @@ async function render() {
   }
 }
 
-// ── Filter event listeners ────────────────────────────
+// Filter event listeners
 document.querySelectorAll(".filter-btn").forEach((btn) => {
   btn.addEventListener("click", () => {
     document
