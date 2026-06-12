@@ -1,3 +1,82 @@
+/* ── Filter bar ── */
+.filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.status-filters {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #555;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filter-btn:hover {
+  border-color: #1a1a2e;
+  color: #1a1a2e;
+}
+
+.filter-btn.active {
+  background: #1a1a2e;
+  border-color: #1a1a2e;
+  color: #fff;
+}
+
+.genre-select {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #444;
+  background: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.genre-select:focus {
+  border-color: #1a1a2e;
+}
+
+/* ── Pagination ── */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e8e8e8;
+}
+
+.page-info {
+  font-size: 0.875rem;
+  color: #666;
+  min-width: 100px;
+  text-align: center;
+}
+
+.page-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* ── Book list ── */
 .book-list {
   list-style: none;

@@ -1,7 +1,17 @@
+const PAGE_SIZE = 20;
+
+let filters = { status: "", genre: "" };
+let currentPage = 1;
+
+// API
 async function fetchBooks() {
-  const res = await fetch("http://localhost:3000/api/books");
+  const params = new URLSearchParams({ page: currentPage, limit: PAGE_SIZE });
+  if (filters.status) params.set("status", filters.status);
+  if (filters.genre) params.set("genre", filters.genre);
+
+  const res = await fetch(`http://localhost:3000/api/books?${params}`);
   if (!res.ok) throw new Error(`Failed to fetch books: ${res.status}`);
-  return res.json();
+  return res.json(); // { books, total, page, totalPages }
 }
 
 async function deleteBook(id) {
@@ -11,6 +21,7 @@ async function deleteBook(id) {
   if (!res.ok) throw new Error(`Failed to delete book: ${res.status}`);
 }
 
+// Card
 function createStatusBadge(status) {
   const span = document.createElement("span");
   span.className = `status-badge status-${status.toLowerCase()}`;
@@ -18,7 +29,7 @@ function createStatusBadge(status) {
   return span;
 }
 
-function createBookCard(book, li) {
+function createBookCard(book) {
   const a = document.createElement("a");
   a.className = "book-card";
   a.href = `book.html?id=${book._id}`;
@@ -41,7 +52,7 @@ function createBookCard(book, li) {
   const meta = document.createElement("div");
   meta.className = "book-meta";
 
-  meta.append(createStatusBadge(book.status || "UNREAD"));
+  meta.append(createStatusBadge(book.status ?? "UNREAD"));
 
   if (book.totalPages) {
     const pages = document.createElement("span");
@@ -70,7 +81,7 @@ function createBookCard(book, li) {
     if (!confirm(`Delete "${book.title}"?`)) return;
     try {
       await deleteBook(book._id);
-      li.remove();
+      await render();
     } catch (err) {
       alert(`Failed to delete: ${err.message}`);
     }
@@ -81,31 +92,104 @@ function createBookCard(book, li) {
   return a;
 }
 
-async function renderBookList() {
+// Pagination
+function renderPagination(totalPages) {
+  const pagination = document.getElementById("pagination");
+
+  if (totalPages <= 1) {
+    pagination.hidden = true;
+    return;
+  }
+
+  pagination.hidden = false;
+  pagination.innerHTML = "";
+
+  const prev = document.createElement("button");
+  prev.className = "btn btn-secondary page-btn";
+  prev.textContent = "← Prev";
+  prev.disabled = currentPage === 1;
+  prev.addEventListener("click", () => {
+    currentPage--;
+    render();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  const info = document.createElement("span");
+  info.className = "page-info";
+  info.textContent = `Page ${currentPage} of ${totalPages}`;
+
+  const next = document.createElement("button");
+  next.className = "btn btn-secondary page-btn";
+  next.textContent = "Next →";
+  next.disabled = currentPage === totalPages;
+  next.addEventListener("click", () => {
+    currentPage++;
+    render();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  pagination.append(prev, info, next);
+}
+
+// Render
+async function render() {
   const list = document.getElementById("book-list");
+  list.innerHTML = "";
 
   try {
-    const books = await fetchBooks();
+    const { books, totalPages } = await fetchBooks();
 
-    if (books.length === 0) {
-      const msg = document.createElement("p");
-      msg.className = "status-message";
-      msg.textContent = "No books found.";
-      list.replaceWith(msg);
+    // If deletion emptied the current page, step back
+    if (books.length === 0 && currentPage > 1) {
+      currentPage--;
+      await render();
       return;
     }
 
-    books.forEach((book) => {
+    if (books.length === 0) {
       const li = document.createElement("li");
-      li.append(createBookCard(book, li));
+      const msg = document.createElement("p");
+      msg.className = "status-message";
+      msg.textContent = "No books found.";
+      li.append(msg);
       list.append(li);
-    });
+    } else {
+      books.forEach((book) => {
+        const li = document.createElement("li");
+        li.append(createBookCard(book));
+        list.append(li);
+      });
+    }
+
+    renderPagination(totalPages);
   } catch (err) {
+    const li = document.createElement("li");
     const msg = document.createElement("p");
     msg.className = "status-message";
     msg.textContent = `Error: ${err.message}`;
-    list.replaceWith(msg);
+    li.append(msg);
+    list.append(li);
   }
 }
 
-renderBookList();
+// Filter event listeners
+document.querySelectorAll(".filter-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document
+      .querySelectorAll(".filter-btn")
+      .forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    filters.status = btn.dataset.status;
+    currentPage = 1;
+    render();
+  });
+});
+
+document.getElementById("genre-filter").addEventListener("change", (e) => {
+  filters.genre = e.target.value;
+  currentPage = 1;
+  render();
+});
+
+// Init
+render();
