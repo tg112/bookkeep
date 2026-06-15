@@ -1,3 +1,5 @@
+import { API_BASE } from "../constants/index.js";
+
 const form = document.getElementById("register-form");
 const submitBtn = document.getElementById("submit-btn");
 const formError = document.getElementById("form-error");
@@ -30,7 +32,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Saving…";
 
   try {
-    const res = await fetch("http://localhost:3000/api/books", {
+    const res = await fetch(`${API_BASE}/books`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),

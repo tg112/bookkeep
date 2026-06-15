@@ -1,3 +1,5 @@
+import { API_BASE } from "../constants/index.js";
+
 const id = new URLSearchParams(location.search).get("id");
 
 const form = document.getElementById("edit-form");
@@ -7,7 +9,7 @@ const titleInput = document.getElementById("title");
 const titleError = document.getElementById("title-error");
 
 async function fetchBook(bookId) {
-  const res = await fetch(`http://localhost:3000/api/books/${bookId}`);
+  const res = await fetch(`${API_BASE}/books/${bookId}`);
   if (!res.ok) throw new Error(`Failed to fetch book: ${res.status}`);
   return res.json();
 }
@@ -57,7 +59,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Saving…";
 
   try {
-    const res = await fetch(`http://localhost:3000/api/books/${id}`, {
+    const res = await fetch(`${API_BASE}/books/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
