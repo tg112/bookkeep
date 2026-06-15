@@ -1,3 +1,5 @@
+import { API_BASE } from "../constants/index.js";
+
 const PAGE_SIZE = 20;
 
 let filters = { status: "", genre: "" };
@@ -9,13 +11,13 @@ async function fetchBooks() {
   if (filters.status) params.set("status", filters.status);
   if (filters.genre) params.set("genre", filters.genre);
 
-  const res = await fetch(`http://localhost:3000/api/books?${params}`);
+  const res = await fetch(`${API_BASE}/books?${params}`);
   if (!res.ok) throw new Error(`Failed to fetch books: ${res.status}`);
   return res.json(); // { books, total, page, totalPages }
 }
 
 async function deleteBook(id) {
-  const res = await fetch(`http://localhost:3000/api/books/${id}`, {
+  const res = await fetch(`${API_BASE}/books/${id}`, {
     method: "DELETE",
   });
   if (!res.ok) throw new Error(`Failed to delete book: ${res.status}`);

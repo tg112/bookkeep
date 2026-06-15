@@ -1,7 +1,9 @@
+import { API_BASE } from "../constants/index.js";
+
 const id = new URLSearchParams(location.search).get("id");
 
 async function fetchBook(bookId) {
-  const res = await fetch(`http://localhost:3000/api/books/${bookId}`);
+  const res = await fetch(`${API_BASE}/books/${bookId}`);
   if (!res.ok) throw new Error(`Failed to fetch book: ${res.status}`);
   return res.json();
 }
