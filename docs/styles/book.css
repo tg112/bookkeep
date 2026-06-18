@@ -118,3 +118,99 @@
   font-weight: 700;
   color: #1a1a2e;
 }
+
+/* ── Notes ── */
+.notes-section {
+  max-width: 680px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.note-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.note-textarea {
+  width: 100%;
+  font: inherit;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.note-textarea:focus {
+  outline: none;
+  border-color: #1a1a2e;
+}
+
+.note-form-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.note-page-input {
+  font: inherit;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 160px;
+}
+
+.note-page-input:focus {
+  outline: none;
+  border-color: #1a1a2e;
+}
+
+.notes-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.note-card {
+  background: #f8f8f8;
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.note-content {
+  font-size: 0.95rem;
+  color: #1a1a2e;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note-meta {
+  display: flex;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: #999;
+}
+
+.note-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.note-btn {
+  padding: 5px 12px;
+  font-size: 0.82rem;
+}
+
+.notes-empty {
+  list-style: none;
+  font-size: 0.9rem;
+  color: #999;
+  padding: 8px 0;
+}

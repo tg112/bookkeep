@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb";
 import { getBooksCollection } from "../models/Book.js";
+import { getNotesCollection } from "../models/Note.js";
 
 export const getBookById = async (req, res) => {
   try {
@@ -79,6 +80,9 @@ export const deleteBook = async (req, res) => {
     if (result.deletedCount === 0) {
       return res.status(404).json({ error: "Book not found" });
     }
+    await getNotesCollection().deleteMany({
+      bookId: new ObjectId(req.params.bookId),
+    });
     return res.status(200).send();
   } catch (e) {
     return res.status(400).json({ error: e.message });
