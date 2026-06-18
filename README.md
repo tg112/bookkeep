@@ -1,8 +1,17 @@
 # Bookkeep
 
+## Project Objective
+
 A personal reading tracker that lets you manage your book collection — add books, track reading progress, and filter by status or genre.
 
-**Live demo:** https://tg112.github.io/bookkeep
+- **Author:** Shota Togawa, Daiwei Zhang
+- **Class Link:** 
+- **Live demo:** https://tg112.github.io/bookkeep
+- [**Desing Doc**](./DESIGNDOC.md)
+
+![top](./public/images/top.png)
+![add](./public/images/add.png)
+![add](./public/images/edit.png)
 
 ## Features
 
