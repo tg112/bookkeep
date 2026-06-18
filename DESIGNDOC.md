@@ -53,3 +53,5 @@ Homepage/navigation, MongoDB Atlas setup, project structure, ESLint/Prettier con
 - Backend: Node.js + Express
 - Database: MongoDB using the native MongoDB Node.js driver
 - Data Requests: Fetch API
+
+## Desing Mock
