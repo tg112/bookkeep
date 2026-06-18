@@ -5,7 +5,7 @@
 A personal reading tracker that lets you manage your book collection — add books, track reading progress, and filter by status or genre.
 
 - **Author:** Shota Togawa, Daiwei Zhang
-- **Class Link:** 
+- **Class Link:** https://johnguerra.co/classes/webDevelopment_online_summer_2026/
 - **Live demo:** https://tg112.github.io/bookkeep
 - [**Desing Doc**](./DESIGNDOC.md)
 
