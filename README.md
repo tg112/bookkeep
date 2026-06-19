@@ -12,6 +12,7 @@ A personal reading tracker that lets you manage your book collection — add boo
 ![top](./public/images/top.png)
 ![add](./public/images/add.png)
 ![add](./public/images/edit.png)
+![note](./public/images/note.png)
 
 ## Features
 
