@@ -55,3 +55,5 @@ Homepage/navigation, MongoDB Atlas setup, project structure, ESLint/Prettier con
 - Data Requests: Fetch API
 
 ## Desing Mock
+
+![design mock](./public/images/design_mock.png)
