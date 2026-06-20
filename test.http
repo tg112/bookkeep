@@ -25,6 +25,41 @@ Content-Type: application/json
 }
 
 
-### DELETE a book
+### DELETE a book (also cascade-deletes its notes)
 DELETE http://localhost:3000/api/books/6a2a359dd859a9ad271b25d1
+Content-Type: application/json
+
+
+### GET all notes for a book
+GET http://localhost:3000/api/books/6a2a35d9d859a9ad271b25d2/notes
+content-type: application/json
+
+### Create a note for a book
+POST http://localhost:3000/api/books/6a2a35d9d859a9ad271b25d2/notes
+content-type: application/json
+
+{
+    "content": "Great chapter on closures.",
+    "page": 42
+}
+
+### Create a note with empty content (expect 400)
+POST http://localhost:3000/api/books/6a2a35d9d859a9ad271b25d2/notes
+content-type: application/json
+
+{
+    "content": "   "
+}
+
+### Patch a note
+PATCH http://localhost:3000/api/notes/6a2a35d9d859a9ad271b25e9
+Content-Type: application/json
+
+{
+    "content": "Updated note text",
+    "page": 50
+}
+
+### DELETE a note
+DELETE http://localhost:3000/api/notes/6a2a35d9d859a9ad271b25e9
 Content-Type: application/json

@@ -20,6 +20,32 @@
       </div>
 
       <div id="book-detail"></div>
+
+      <section id="notes" class="notes-section card" hidden>
+        <h2 class="detail-section-label">Notes</h2>
+
+        <form id="note-form" class="note-form">
+          <textarea
+            id="note-content"
+            class="note-textarea"
+            placeholder="Add a note, quote, or study comment…"
+            rows="3"
+            required
+          ></textarea>
+          <div class="note-form-row">
+            <input
+              id="note-page"
+              class="note-page-input"
+              type="number"
+              min="1"
+              placeholder="Page (optional)"
+            />
+            <button type="submit" class="btn">Add Note</button>
+          </div>
+        </form>
+
+        <ul id="notes-list" class="notes-list"></ul>
+      </section>
     </main>
 
     <script type="module" src="js/book.js"></script>
