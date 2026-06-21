@@ -48,10 +48,13 @@ A personal reading tracker that lets you manage your book collection — add boo
 │   ├── db.js             # MongoDB connection
 │   ├── routers/
 │   │   └── books.js      # Route definitions
+|   │   └── notes.js   
 │   ├── controllers/
 │   │   └── books.js      # Request handlers
+|   │   └── notes.js   
 │   └── models/
 │       └── Book.js       # Collection accessor
+|       └── Notes.js   
 ├── docs/                 # Production frontend (served via GitHub Pages)
 │   ├── index.html
 │   ├── book.html
@@ -156,7 +159,6 @@ Base URL (production): `https://bookkeep-8vm7.onrender.com/api`
   "author": "F. Scott Fitzgerald",
   "totalPages": 180,
   "genre": "FICTION",
-  "rating": 4
 }
 ```
 
