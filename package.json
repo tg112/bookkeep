@@ -13,7 +13,6 @@
   "license": "MIT",
   "author": "Shota Togawa, Daiwei Zhang",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "start": "node --watch ./backend/index.js",
     "lint-staged": "lint-staged",

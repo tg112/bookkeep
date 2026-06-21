@@ -23,7 +23,10 @@
   font-weight: 500;
   color: #555;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    color 0.15s;
 }
 
 .filter-btn:hover {
@@ -97,7 +100,9 @@
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.15s, border-color 0.15s;
+  transition:
+    box-shadow 0.15s,
+    border-color 0.15s;
 }
 
 .book-card:hover {
@@ -175,7 +180,10 @@
   cursor: pointer;
   line-height: 1;
   flex-shrink: 0;
-  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s,
+    border-color 0.15s;
 }
 
 .btn-edit:hover {

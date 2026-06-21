@@ -91,6 +91,16 @@ Open `docs/index.html` directly in your browser, or serve it with any static fil
 | `MONGODB_URI` | `mongodb://localhost:27017` | MongoDB connection string |
 | `DB_NAME` | `bookkeep` | Database name |
 
+## Usage
+
+Once the app is running locally (or on the [live demo](https://tg112.github.io/bookkeep)):
+
+1. **Browse your library** — the home page lists your books. Filter with the status buttons (Unread / Reading / Read) and the genre dropdown, and use the pager to move between pages (20 books per page).
+2. **Add a book** — click **Add Book**, enter a title (required) plus optional author, total pages, and genre, then save.
+3. **Open a book** — click any book card to see its detail page with reading progress.
+4. **Edit or delete a book** — use the ✎ (edit) and ✕ (delete) controls on a card or the detail page. Deleting a book also removes its notes.
+5. **Take notes** — on a book's detail page, add a note (optionally with a page number), then edit or delete it inline.
+
 ## API Reference
 
 Base URL (production): `https://bookkeep-8vm7.onrender.com/api`
