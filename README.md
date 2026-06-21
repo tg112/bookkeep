@@ -131,7 +131,8 @@ Base URL (production): `https://bookkeep-8vm7.onrender.com/api`
   "books": [...],
   "total": 42,
   "page": 1,
-  "totalPages": 3
+  "totalPages": 3,
+  "rating": 4
 }
 ```
 
@@ -142,8 +143,7 @@ Base URL (production): `https://bookkeep-8vm7.onrender.com/api`
   "title": "The Great Gatsby",
   "author": "F. Scott Fitzgerald",
   "totalPages": 180,
-  "genre": "FICTION",
-  "rating": 4
+  "genre": "FICTION"
 }
 ```
 
