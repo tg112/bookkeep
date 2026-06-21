@@ -25,6 +25,7 @@ function renderBook(book) {
         <div class="detail-badges">
           ${book.genre ? `<span class="genre-badge">${book.genre.replace("-", "&#8209;")}</span>` : ""}
           <span class="status-badge status-${(book.status ?? "UNREAD").toLowerCase()}">${book.status ?? "UNREAD"}</span>
+          ${book.rating ? `<span class="rating-stars">${"⭐".repeat(book.rating)}</span>` : ""}
         </div>
         <h1 class="detail-title">${escapeHtml(book.title)}</h1>
         <p class="detail-author">${escapeHtml(book.author ?? "Unknown author")}</p>

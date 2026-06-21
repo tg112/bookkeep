@@ -27,6 +27,9 @@ function prefill(book) {
   if (book.genre) genreSelect.value = book.genre;
 
   document.getElementById("status").value = book.status ?? "UNREAD";
+
+  const ratingSelect = document.getElementById("rating");
+  if (book.rating) ratingSelect.value = book.rating;
 }
 
 form.addEventListener("submit", async (e) => {
@@ -47,6 +50,7 @@ form.addEventListener("submit", async (e) => {
   const currentPage = document.getElementById("currentPage").value;
   const genre = document.getElementById("genre").value;
   const status = document.getElementById("status").value;
+  const rating = document.getElementById("rating").value;
 
   const body = { title };
   if (author) body.author = author;
@@ -54,6 +58,7 @@ form.addEventListener("submit", async (e) => {
   if (currentPage !== "") body.currentPage = Number(currentPage);
   if (genre) body.genre = genre;
   if (status) body.status = status;
+  body.rating = rating ? Number(rating) : null;
 
   submitBtn.disabled = true;
   submitBtn.textContent = "Saving…";
