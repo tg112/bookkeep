@@ -56,6 +56,13 @@ function createBookCard(book) {
 
   meta.append(createStatusBadge(book.status ?? "UNREAD"));
 
+  if (book.rating) {
+    const stars = document.createElement("span");
+    stars.className = "book-rating";
+    stars.textContent = "⭐".repeat(book.rating);
+    meta.append(stars);
+  }
+
   if (book.totalPages) {
     const pages = document.createElement("span");
     pages.className = "book-pages";

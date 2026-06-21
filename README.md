@@ -20,11 +20,14 @@ A personal reading tracker that lets you manage your book collection — add boo
 - Paginated results (20 books per page, server-side)
 - Add, edit, and delete books
 - Track reading progress (current page / total pages)
-- Book fields: title, author, total pages, current page, genre, status
+- Rate books from 1–5 stars; stars displayed on the list and detail pages
+- Book fields: title, author, total pages, current page, genre, status, rating
 
 **Genres:** Fiction, Non-Fiction, Biography, Autobiography, History, Business, Technology, Science, Economics
 
 **Statuses:** Unread, Reading, Read
+
+**Ratings:** 1–5 (⭐ displayed wherever the book appears)
 
 ## Tech Stack
 
@@ -139,11 +142,12 @@ Base URL (production): `https://bookkeep-8vm7.onrender.com/api`
   "title": "The Great Gatsby",
   "author": "F. Scott Fitzgerald",
   "totalPages": 180,
-  "genre": "FICTION"
+  "genre": "FICTION",
+  "rating": 4
 }
 ```
 
-`currentPage` defaults to `0` and `status` defaults to `UNREAD` if omitted.
+`currentPage` defaults to `0` and `status` defaults to `UNREAD` if omitted. `rating` is an integer 1–5 and is optional.
 
 ## License
 
