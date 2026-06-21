@@ -7,6 +7,7 @@ A personal reading tracker that lets you manage your book collection — add boo
 - **Author:** Shota Togawa, Daiwei Zhang
 - **Class Link:** https://johnguerra.co/classes/webDevelopment_online_summer_2026/
 - **Live demo:** https://tg112.github.io/bookkeep
+- **Demo video:** https://youtu.be/_Ez62Ai7SJw
 - [**Desing Doc**](./DESIGNDOC.md)
 
 ![top](./public/images/top.png)
