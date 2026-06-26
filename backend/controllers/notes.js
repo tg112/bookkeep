@@ -1,3 +1,5 @@
+// put more comments throughout the code
+
 import { ObjectId } from "mongodb";
 import { getNotesCollection } from "../models/Note.js";
 
