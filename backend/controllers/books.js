@@ -1,3 +1,4 @@
+// put more comments throughout the code and tell us what's happening or about to happen here
 import { ObjectId } from "mongodb";
 import { getBooksCollection } from "../models/Book.js";
 import { getNotesCollection } from "../models/Note.js";
