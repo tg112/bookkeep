@@ -1,3 +1,4 @@
+//Another small design thing is to make sure you are adding comments without them it is making the code very hard to read
 import { ObjectId } from "mongodb";
 import { getBooksCollection } from "../models/Book.js";
 import { getNotesCollection } from "../models/Note.js";
